@@ -1,5 +1,16 @@
 PODS:
-  - JFParseFBFriends (0.1.0)
+  - Bolts (1.1.4)
+  - Facebook-iOS-SDK (3.23.0):
+    - Bolts (~> 1.0)
+  - JFParseFBFriends (0.1.0):
+    - Facebook-iOS-SDK
+    - Parse
+    - ParseFacebookUtils
+  - Parse (1.6.4):
+    - Bolts (~> 1.1)
+  - ParseFacebookUtils (1.6.4):
+    - Facebook-iOS-SDK (~> 3.20)
+    - Parse (~> 1.6.4)
 
 DEPENDENCIES:
   - JFParseFBFriends (from `../`)
@@ -9,6 +20,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  JFParseFBFriends: 08d58f9ba6170b8a19aad2b573bc45b275a22a99
+  Bolts: dd9fb8433d67f5acc3b6b4d1379bbc5513d716c1
+  Facebook-iOS-SDK: 3d65f685348b789e46a9aacf92bfa85b60b63755
+  JFParseFBFriends: 9efae27d394cfe606ab6b452a5edebe9e3aa243f
+  Parse: c2610f7a12ad0defc974803b819c4efe7746e6db
+  ParseFacebookUtils: 00833ccf6fec7d6429e2403fe457496a5089358b
 
 COCOAPODS: 0.35.0
