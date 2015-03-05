@@ -66,5 +66,7 @@
 
 @end
 
-#define kJFParseFBFriendsDatastorePin             @"kJFParseFBFriendsDatastorePin"
-#define kJFParseFBFriendsUserDefaultsKeyFriendIDs @"kJFParseFBFriendsUserDefaultsKeyFriendIDs"
+#define kJFParseFBFriendsDatastorePin                 @"kJFParseFBFriendsDatastorePin"
+#define kJFParseFBFriendsUserDefaultsKeyFriendIDs     @"kJFParseFBFriendsUserDefaultsKeyFriendIDs"
+#define kJFParseFBFriendsUserDefaultsKeyCurrentUserID @"kJFParseFBFriendsUserDefaultsKeyCurrentUserID"
+

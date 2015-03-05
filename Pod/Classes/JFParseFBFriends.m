@@ -59,6 +59,7 @@
 - (void)setFriendIds:(NSArray *)friendIds {
     _friendIds = friendIds;
     [[NSUserDefaults standardUserDefaults] setObject:_friendIds forKey:kJFParseFBFriendsUserDefaultsKeyFriendIDs];
+    [[NSUserDefaults standardUserDefaults] setObject:PFUser.currentUser.objectId forKey:kJFParseFBFriendsUserDefaultsKeyCurrentUserID];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
@@ -105,17 +106,24 @@
     if (![Parse isLocalDatastoreEnabled]) {
         NSLog(@"JFParseFBFriends: Cannot use Parse local datastore to retrieve cached friend list: datastore not enabled");
     } else {
-        /* Run the datastore query */
-        PFQuery *friendQuery = [PFUser query];
-        [friendQuery fromPinWithName:kJFParseFBFriendsDatastorePin];
-        [friendQuery whereKey:@"fbId" containedIn:[JFParseFBFriends sharedInstance].friendIds];
-        [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (error) {
-                block(NO, YES, nil, error);
-            } else {
-                block(YES, YES, objects, error);
-            }
-        }];
+        /* Skip this step if the current user isn't the one we last cached data for */
+        if (![[[NSUserDefaults standardUserDefaults] stringForKey:kJFParseFBFriendsUserDefaultsKeyCurrentUserID] isEqual:PFUser.currentUser.objectId]) {
+            update = YES;
+        } else {
+            
+            /* Run the datastore query */
+            PFQuery *friendQuery = [PFUser query];
+            [friendQuery fromPinWithName:kJFParseFBFriendsDatastorePin];
+            [friendQuery whereKey:@"fbId" containedIn:[JFParseFBFriends sharedInstance].friendIds];
+            [friendQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (error) {
+                    block(NO, YES, nil, error);
+                } else {
+                    block(YES, YES, objects, error);
+                }
+            }];
+            
+        }
     }
     
     /* Done if we don't need to update the friends list */
