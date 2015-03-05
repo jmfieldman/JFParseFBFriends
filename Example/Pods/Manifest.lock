@@ -1,0 +1,14 @@
+PODS:
+  - JFParseFBFriends (0.1.0)
+
+DEPENDENCIES:
+  - JFParseFBFriends (from `../`)
+
+EXTERNAL SOURCES:
+  JFParseFBFriends:
+    :path: ../
+
+SPEC CHECKSUMS:
+  JFParseFBFriends: 08d58f9ba6170b8a19aad2b573bc45b275a22a99
+
+COCOAPODS: 0.35.0
