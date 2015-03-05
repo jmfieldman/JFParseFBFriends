@@ -9,19 +9,18 @@
 
 Pod::Spec.new do |s|
   s.name             = "JFParseFBFriends"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of JFParseFBFriends."
+  s.version          = "1.0.0"
+  s.summary          = "A CocoaPod to help manage Facebook/Parse friend relationships."
   s.description      = <<-DESC
-                       An optional longer description of JFParseFBFriends
+                       Being able to quickly prototype social apps with Parse/Facebook is great.  One of the annoying tasks is managing the caching/update of the user's friend network.
 
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
+                       This helper class is designed to streamline the management of your Parse PFUser's Facebook info, and use blocks to push seamless friend-list updates to your UI.
                        DESC
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/JFParseFBFriends"
+  s.homepage         = "https://github.com/jmfieldman/JFParseFBFriends"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Jason Fieldman" => "jason@fieldman.org" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/JFParseFBFriends.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/jmfieldman/JFParseFBFriends.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '7.0'
