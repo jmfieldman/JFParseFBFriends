@@ -97,6 +97,11 @@
 }
 
 + (void)findFriendsAndUpdate:(BOOL)update completion:(void (^)(BOOL success, BOOL localStore, NSArray* pfusers, NSError *error))block {
+	if (!PFUser.currentUser) {
+		NSLog(@"JFParseFBFriends: Cannot find friends if PFUser.currentUser is nil");
+		return;
+	}
+	
     if (![Parse isLocalDatastoreEnabled]) {
         NSLog(@"JFParseFBFriends: Cannot use Parse local datastore to retrieve cached friend list: datastore not enabled");
     } else {

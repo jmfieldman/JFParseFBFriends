@@ -9,10 +9,37 @@
 #import "JFAppDelegate.h"
 #import "JFViewController.h"
 
+#import <Parse/Parse.h>
+#import <FacebookSDK.h>
+#import <PFFacebookUtils.h>
+#import "JFParseFBFriends.h"
+
 @implementation JFAppDelegate
+
+
+/* REQUIRED FOR FB INTEGRATION */
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    return [FBAppCall handleOpenURL:url
+                  sourceApplication:sourceApplication
+                        withSession:[PFFacebookUtils session]];
+}
+
+
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
+    /* ------- Initialize Parse ------- */
+    [Parse enableLocalDatastore];
+    [Parse setApplicationId:@"i5h3M4hzq51DmMjCzC4NFKTtWguYb17szcIQO9mn" clientKey:@"bfaDpQYrTwhVGRD9vbihrQhbsvIkfonDO1Pvygnu"];
+    [PFFacebookUtils initializeFacebook];
+   
+    /* Create window */
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = [[JFViewController alloc] init];
     [self.window makeKeyAndVisible];
@@ -41,11 +68,18 @@
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+
+    /* Required by API */
+    [FBAppEvents activateApp];
+    [FBAppCall handleDidBecomeActiveWithSession:[PFFacebookUtils session]];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    
+    /* Required by API */
+    [[PFFacebookUtils session] close];
 }
 
 @end
