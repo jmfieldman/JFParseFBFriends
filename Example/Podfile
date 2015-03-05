@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'JFParseFBFriends', :exclusive => true do
+  pod "JFParseFBFriends", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "JFParseFBFriends", :path => "../"
+
+  
+end
