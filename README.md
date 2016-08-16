@@ -5,7 +5,7 @@
 [![License](https://img.shields.io/cocoapods/l/JFParseFBFriends.svg?style=flat)](http://cocoadocs.org/docsets/JFParseFBFriends)
 [![Platform](https://img.shields.io/cocoapods/p/JFParseFBFriends.svg?style=flat)](http://cocoadocs.org/docsets/JFParseFBFriends)
 
-# This Library is deprecated and is no longer be maintained. It is not compatible with the latest versions of Parse or Facebook.
+# This Library is deprecated and is no longer maintained. It is not compatible with the latest versions of Parse or Facebook.
 
 Being able to quickly prototype social apps with Parse/Facebook is great.  One of the annoying tasks is managing the caching/update of the user's friend network.
 
